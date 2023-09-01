@@ -18,6 +18,8 @@ export const Fab = ({title, onPress, contador, position}: Props) => {
   const ios = () => {
     return (
       <TouchableOpacity
+        onPress={onPress}
+        activeOpacity={ 0.8 }
         disabled={
           position === 'br' && contador === 10
             ? true
@@ -32,9 +34,7 @@ export const Fab = ({title, onPress, contador, position}: Props) => {
         <View
           /* estilizado para posicion y color del tipo de boton */
           style={
-            contador === 10 && position === 'br'
-              ? styles.blocked
-              : contador === 0 && position === 'bl'
+            (contador === 10 && position === 'br') || (contador === 0 && position === 'bl')
               ? styles.blocked
               : position === 'bl'
               ? styles.fabL
@@ -42,10 +42,11 @@ export const Fab = ({title, onPress, contador, position}: Props) => {
           }>
           {/* etiqueta para estilizar el centrado del texto dentro del button */}
           <Text style={styles.fabText}>
-            {(contador === 10 && position === 'br') ||
-            (contador === 0 && position === 'bl')
-              ? '\uD83D\uDE22'
-              : title}
+            {
+              (contador === 10 && position === 'br') || (contador === 0 && position === 'bl')
+                ? '\uD83D\uDE22'  //-- emoji en unicode
+                : title
+            }
           </Text>
         </View>
       </TouchableOpacity>
@@ -72,9 +73,7 @@ export const Fab = ({title, onPress, contador, position}: Props) => {
           <View
             /* estilizado para posicion y color del tipo de boton */
             style={
-              contador === 10 && position === 'br'
-                ? styles.blocked
-                : contador === 0 && position === 'bl'
+              ((contador === 10 && position === 'br') || (contador === 0 && position === 'bl'))
                 ? styles.blocked
                 : position === 'bl'
                 ? styles.fabL
@@ -82,10 +81,11 @@ export const Fab = ({title, onPress, contador, position}: Props) => {
             }>
             {/* etiqueta para estilizar el centrado del texto dentro del button */}
             <Text style={styles.fabText}>
-              {(contador === 10 && position === 'br') ||
-              (contador === 0 && position === 'bl')
-                ? '\uD83D\uDE22'
-                : title}
+              {
+                (contador === 10 && position === 'br') || (contador === 0 && position === 'bl')
+                ? '\uD83D\uDE22'  //-- emoji en unicode
+                : title
+              }
             </Text>
           </View>
         </TouchableNativeFeedback>
